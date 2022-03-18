@@ -81,8 +81,17 @@ export default function NewTask({setTasks,value}) {
     setIsFetching(false);
     setModalShow(true);
   }
+
+  function showIMC(){
+    setForm({
+      altura: "",
+      peso: "",
+    });
+  }
   return (
-    <>
+    <> 
+    <div className="d-flex justify-content-around">
+
       <Button
         variant='success'
         className='d-flex align-items-center'
@@ -90,6 +99,14 @@ export default function NewTask({setTasks,value}) {
       >
         <FaPlus className='me-2' /> Nova Tarefa
       </Button>
+      <Button
+        variant='success'
+        className='d-flex align-items-center'
+        onClick={showIMC}
+      >
+        <FaPlus className='me-2' /> Calcular IMC
+      </Button>
+    </div>
       <ModalNewTask
         show={modalShow}
         formData={{ form, setForm }}
@@ -127,6 +144,7 @@ function ModalNewTask({
       >
         <Modal.Title>Nova tarefa</Modal.Title>
       </Modal.Header>
+      
       <Modal.Body>
         <Form onSubmit={(e) => handlerFormSubmit(e)}>
           
